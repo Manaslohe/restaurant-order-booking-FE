@@ -1,8 +1,8 @@
-const API_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const createOrder = async (orderData) => {
   try {
-    const response = await fetch(`${API_URL}/orders`, {
+    const response = await fetch(`${BASE_URL}/api/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export const createOrder = async (orderData) => {
 };
 
 export const getOrders = async () => {
-  const response = await fetch(`${API_URL}/orders`);
+  const response = await fetch(`${BASE_URL}/api/orders`);
   
   if (!response.ok) {
     throw new Error('Failed to fetch orders');
