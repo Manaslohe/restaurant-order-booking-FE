@@ -1,8 +1,8 @@
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = process.env.REACT_APP_API_URL || '';
 
 export const createOrder = async (orderData) => {
   try {
-    const response = await fetch(`${BASE_URL}/api/orders`, {
+    const response = await fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,12 +20,14 @@ export const createOrder = async (orderData) => {
     
     return response.json();
   } catch (error) {
+    console.error('API Error:', error);  // Add error logging
     throw new Error(error.message || 'Failed to create order');
   }
 };
 
 export const getOrders = async () => {
-  const response = await fetch(`${BASE_URL}/api/orders`);
+  console.log('API URL:', `${BASE_URL}/orders`);  // Add debug logging
+  const response = await fetch(`${BASE_URL}/orders`);
   
   if (!response.ok) {
     throw new Error('Failed to fetch orders');
