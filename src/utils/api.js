@@ -1,5 +1,9 @@
 const BASE_URL = import.meta.env.VITE_API_URL || '';
 
+// Add environment logging
+console.log('Current environment:', import.meta.env.MODE);
+console.log('API Base URL:', BASE_URL);
+
 console.log('Base URL:', BASE_URL); // Keep this debug log
 
 export const createOrder = async (orderData) => {
