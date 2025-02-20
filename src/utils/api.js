@@ -1,8 +1,12 @@
-const BASE_URL = process.env.REACT_APP_API_URL || '';
+const BASE_URL = import.meta.env.VITE_API_URL || '';
+
+console.log('Base URL:', BASE_URL); // Keep this debug log
 
 export const createOrder = async (orderData) => {
+  const url = `${BASE_URL}/api/orders`;
+  console.log('Creating order at:', url); // Add request URL logging
   try {
-    const response = await fetch(`${BASE_URL}/orders`, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,8 +30,9 @@ export const createOrder = async (orderData) => {
 };
 
 export const getOrders = async () => {
-  console.log('API URL:', `${BASE_URL}/orders`);  // Add debug logging
-  const response = await fetch(`${BASE_URL}/orders`);
+  const url = `${BASE_URL}/api/orders`;
+  console.log('Fetching orders from:', url); // Add request URL logging
+  const response = await fetch(url);
   
   if (!response.ok) {
     throw new Error('Failed to fetch orders');
