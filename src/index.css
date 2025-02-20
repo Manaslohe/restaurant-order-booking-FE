@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #ff7a37;
+    border-radius: 5px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #e86520;
+  }
+  
+  @media (max-width: 1024px) {
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 8px;
+    }
+  }
+  
+  .touch-manipulation {
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+  }
