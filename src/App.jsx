@@ -135,22 +135,48 @@ function App() {
                     <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 tracking-tight whitespace-nowrap">
                       New Order
                     </h2>
-                    <div className="relative flex-1 max-w-[200px]">
-                      <select
-                        value={bookingType}
-                        onChange={(e) => setBookingType(e.target.value)}
-                        className="w-full pl-4 pr-10 py-2 text-base border rounded-lg bg-gray-50 
-                                focus:ring-2 focus:ring-orange-500 focus:border-orange-500
-                                cursor-pointer transition-all duration-300 hover:bg-gray-100
-                                shadow-sm hover:shadow-md appearance-none"
-                      >
-                        <option value="regular">Regular Booking</option>
-                        <option value="event">Event Booking</option>
-                      </select>
-                      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+                    
+                    {/* Enhanced Beautiful Select */}
+                    <div className="relative flex-1 max-w-[220px]">
+                      <div className="relative">
+                        <select
+                          value={bookingType}
+                          onChange={(e) => setBookingType(e.target.value)}
+                          className="w-full appearance-none pl-10 pr-10 py-2.5 text-base font-medium
+                                  border border-gray-200 rounded-xl bg-white
+                                  focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400
+                                  cursor-pointer transition-all duration-200 shadow-sm hover:shadow"
+                        >
+                          <option value="regular" className="py-2">Regular Booking</option>
+                          <option value="event" className="py-2">Event Booking</option>
+                        </select>
+                        
+                        {/* Left Icon */}
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          {bookingType === 'regular' ? (
+                            <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-8 9h8a7 7 0 00-8 0z" />
+                            </svg>
+                          ) : (
+                            <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          )}
+                        </div>
+                        
+                        {/* Right Icon (Dropdown Arrow) */}
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      {/* Type Indicator */}
+                      <div className="absolute -bottom-2.5 left-3 right-3 h-1 rounded-full overflow-hidden">
+                        <div className="h-full w-full bg-gradient-to-r from-orange-400 to-orange-500 animate-pulse-subtle"></div>
                       </div>
                     </div>
                   </div>
