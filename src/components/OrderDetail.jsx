@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { BASE_URL } from '../utils/api'; // Import BASE_URL from api.js
 
 function OrderDetail({ order, onClose, onDeliveryUpdate }) {
   const [deliveryQuantity, setDeliveryQuantity] = useState(1);
@@ -35,7 +36,8 @@ function OrderDetail({ order, onClose, onDeliveryUpdate }) {
       }
 
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/orders/${updatedOrder._id}/deliver`, {
+      // Use the BASE_URL from api.js instead of hardcoding localhost
+      const response = await fetch(`${BASE_URL}/api/orders/${updatedOrder._id}/deliver`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
