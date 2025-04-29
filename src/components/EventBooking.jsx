@@ -18,8 +18,11 @@ function EventBooking({ onCreateOrder }) {
     e.preventDefault();
     try {
       setLoading(true);
+      // Validate mobile number, not booker name
       validatePhone(formData.mobileNumber)
       validateDateTime(formData.date, formData.time);
+      
+      console.log('Submitting event booking with data:', formData);
       
       const success = await onCreateOrder({
         ...formData,
