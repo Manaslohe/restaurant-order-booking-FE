@@ -8,6 +8,7 @@ function EventBooking({ onCreateOrder }) {
   const [formData, setFormData] = useState({
     eventName: '',
     bookerName: '',
+    mobileNumber: '',
     guestCount: 1,
     date: '',
     time: '',
@@ -17,7 +18,7 @@ function EventBooking({ onCreateOrder }) {
     e.preventDefault();
     try {
       setLoading(true);
-      validatePhone(formData.bookerName)
+      validatePhone(formData.mobileNumber)
       validateDateTime(formData.date, formData.time);
       
       const success = await onCreateOrder({
@@ -26,7 +27,7 @@ function EventBooking({ onCreateOrder }) {
       });
       
       if (success) {
-        setFormData({ eventName: '', bookerName: '', guestCount: 1, date: '', time: '' });
+        setFormData({ eventName: '', bookerName: '', mobileNumber: '', guestCount: 1, date: '', time: '' });
         toast.success('Event booking created successfully!');
       }
     } catch (error) {
@@ -88,6 +89,23 @@ function EventBooking({ onCreateOrder }) {
                         transition-all hover:border-gray-300 shadow-sm
                         placeholder:text-gray-400 touch-manipulation"
               placeholder="Enter booker name"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Mobile Number
+            </label>
+            <input
+              type="tel"
+              value={formData.mobileNumber}
+              onChange={(e) => setFormData({...formData, mobileNumber: e.target.value})}
+              className="w-full p-4 text-lg border-2 border-gray-200 rounded-xl bg-white
+                        focus:ring-2 focus:ring-orange-500 focus:border-orange-500
+                        transition-all hover:border-gray-300 shadow-sm
+                        placeholder:text-gray-400 touch-manipulation"
+              placeholder="Enter mobile number"
               required
             />
           </div>
